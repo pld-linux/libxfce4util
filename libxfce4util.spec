@@ -11,7 +11,10 @@ Group:		Libraries
 Source0:	%{name}-snap-%{snap}.tar.bz2
 # Source0-md5:	c625e1e565ad0b07642f360a9860121d
 URL:		http://www.xfce.org/
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 Requires:	glib2 >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
