@@ -1,12 +1,12 @@
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.1.90
-Release:	0.1
+Version:	4.1.91
+Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	28a90871a572e51ea9c9bd3c903af4c6
+# Source0-md5:	ab7b9d6475c553d022d1148c273d88f5
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -88,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
+%{_datadir}/gtk-doc/html/libxfce4util
 
 %files devel
 %defattr(644,root,root,755)
