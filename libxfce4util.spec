@@ -1,15 +1,15 @@
 
-%define		_snap 20040806
+%define		_snap 20040813
 
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.2.0
+Version:	4.1.15
 Release:	0.%{_snap}.1
 License:	BSD
 Group:		Libraries
 Source0:	http://ep09.pld-linux.org/~havner/xfce4/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	2853200ba40791fea871e5f129fcddd5
+# Source0-md5:	6e7dfc877c91d64d29c6c4ad5dc317c1
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
