@@ -2,7 +2,7 @@ Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
 Version:	4.0.6
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries
 #Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
@@ -36,7 +36,7 @@ Pliki nag³ówkowe biblioteki libxfce4util.
 %package static
 Summary:	Static libxfce4util library
 Summary(pl):	Statyczna biblioteka libxfce4util
-Group:		Development/Libriaries
+Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
