@@ -1,5 +1,5 @@
-Summary:	Utility library for the XFce desktop environment
-Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
+Summary:	Utility library for the Xfce desktop environment
+Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
 Version:	4.1.99.2
 Release:	1
@@ -18,10 +18,10 @@ Requires:	glib2 >= 2.2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Basic utility non-GUI functions for XFce.
+Basic utility non-GUI functions for Xfce.
 
 %description -l pl
-Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla XFce.
+Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla Xfce.
 
 %package devel
 Summary:	Development files for libxfce4util library
