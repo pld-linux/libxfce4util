@@ -8,14 +8,13 @@ Group:		Libraries
 Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	eec7187a05487aae84388d0bbf602265
 URL:		http://www.xfce.org/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.2.0
 BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 Requires:	glib2 >= 2.2.0
-Requires:	gtk-doc-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,6 +29,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 2.2.0
+Requires:	gtk-doc-common
 
 %description devel
 Development files for the libxfce4util library.
@@ -90,7 +90,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
-%{_gtkdocdir}/libxfce4util
 
 %files devel
 %defattr(644,root,root,755)
@@ -100,6 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xfce4/libxfce4util
 %{_datadir}/xfce4/m4
 %{_pkgconfigdir}/*.pc
+%{_gtkdocdir}/libxfce4util
 
 %files static
 %defattr(644,root,root,755)
