@@ -15,6 +15,7 @@ BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 Requires:	glib2 >= 2.0.0
+Requires:	gtk-doc-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -69,7 +70,8 @@ Narzêdzia biblioteki libxfce4util.
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-%configure
+%configure \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -88,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
-%{_datadir}/gtk-doc/html/libxfce4util
+%{_gtkdocdir}/libxfce4util
 
 %files devel
 %defattr(644,root,root,755)
