@@ -23,6 +23,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
+Requires:	glib2-devel >= 2.0.0
 
 %description devel
 Development files for the libxfce4util library.
