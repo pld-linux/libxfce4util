@@ -48,6 +48,7 @@ Statyczna biblioteka libxfce4util.
 %setup -q
 
 %build
+cp -f /usr/share/automake/config.sub .
 %configure
 %{__make}
 
