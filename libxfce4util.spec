@@ -1,15 +1,12 @@
-#
-%define		snap 20040616
-#
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.1.0
-Release:	0.%{snap}.1
+Version:	4.1.13
+Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	%{name}-snap-%{snap}.tar.bz2
-# Source0-md5:	c625e1e565ad0b07642f360a9860121d
+Source0:	http://lo1sanok.eu.org/~troll/PLD/xfce4/%{name}-%{version}.tar.bz2
+# Source0-md5:	55708440cfd8819e4685b3704a07fe8a
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -52,7 +49,14 @@ Static libxfce4util library.
 Statyczna biblioteka libxfce4util.
 
 %prep
-%setup -q -n %{name}
+%setup -q
+# This stupid workaround is for nonexistant xfce4-kiosk-query
+# As README.kiosk says - TBD
+mkdir xfce4-kiosk-query
+cat << EOF > xfce4-kiosk-query/Makefile.in
+all:
+install:
+EOF
 
 %build
 %{__libtoolize}
