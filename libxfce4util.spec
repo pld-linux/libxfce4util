@@ -1,12 +1,12 @@
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.0.3
+Version:	4.0.4
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.gz
-# Source0-md5:	d537061181177f5777f0b3c48af5294b
+# Source0-md5:	685dabe6d6db1744733188793d2d5efa
 URL:		http://www.xfce.org/
 BuildRequires:	glib2-devel >= 2.0.0
 BuildRequires:	pkgconfig >= 0.9.0
