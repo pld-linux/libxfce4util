@@ -9,6 +9,7 @@ Source0: 	http://dl.sourceforge.net/xfce/%{name}-%{version}.tar.gz
 # Source0-md5:	a76051fe04b9bd030fb6b7d2db302273
 URL: 		http://www.xfce.org/
 BuildRequires: 	glib2-devel >= 2.0.0
+BuildRequires:	pkgconfig >= 0.9.0
 Requires:	glib2 >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
