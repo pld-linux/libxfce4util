@@ -1,17 +1,21 @@
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.0.6
-Release:	2
+Version:	4.1.99.1
+Release:	1
 License:	BSD
 Group:		Libraries
-#Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
-Source0:	http://hannelore.f1.fhtw-berlin.de/mirrors/xfce4/xfce-%{version}/src/%{name}-%{version}.tar.gz
-# Source0-md5:	4945103c0bd36f53d108bc49b4994f80
+Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	eec7187a05487aae84388d0bbf602265
 URL:		http://www.xfce.org/
-BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	gtk-doc
+BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
-Requires:	glib2 >= 2.0.0
+Requires:	glib2 >= 2.2.0
+Requires:	gtk-doc-common
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,7 +29,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.0.0
+Requires:	glib2-devel >= 2.2.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -45,12 +49,29 @@ Static libxfce4util library.
 %description static -l pl
 Statyczna biblioteka libxfce4util.
 
+%package tools
+Summary:	Tools for libxfce4util library
+Summary(pl):	Narzêdzia biblioteki libxfce4util
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description tools
+Tools for libxfce4util library.
+
+%description static -l pl
+Narzêdzia biblioteki libxfce4util.
+
 %prep
 %setup -q
 
 %build
-cp -f /usr/share/automake/config.sub .
-%configure
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoheader}
+%{__automake}
+%{__autoconf}
+%configure \
+	--with-html-dir=%{_gtkdocdir}
 %{__make}
 
 %install
@@ -69,8 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
-%dir %{_datadir}/xfce4/i18n
-%{_datadir}/xfce4/i18n/nls.alias
+%{_gtkdocdir}/libxfce4util
 
 %files devel
 %defattr(644,root,root,755)
@@ -84,3 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files tools
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/*
