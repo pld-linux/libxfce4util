@@ -1,13 +1,15 @@
+#
+%define		snap 20040616
+#
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.0.5
-Release:	1
+Version:	4.1.0
+Release:	0.%{snap}.1
 License:	BSD
 Group:		Libraries
-#Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
-Source0:	http://hannelore.f1.fhtw-berlin.de/mirrors/xfce4/xfce-%{version}/src/%{name}-%{version}.tar.gz
-# Source0-md5:	88cfd1c646233621c2e5c2fa170ccc6c
+Source0:	%{name}-snap-%{snap}.tar.bz2
+# Source0-md5:	c625e1e565ad0b07642f360a9860121d
 URL:		http://www.xfce.org/
 BuildRequires:	glib2-devel >= 2.0.0
 BuildRequires:	pkgconfig >= 0.9.0
@@ -46,10 +48,14 @@ Static libxfce4util library.
 Statyczna biblioteka libxfce4util.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
-cp -f /usr/share/automake/config.sub .
+%{__libtoolize}
+%{__aclocal} -I m4
+%{__autoheader}
+%{__automake}
+%{__autoconf}
 %configure
 %{__make}
 
@@ -69,8 +75,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
-%dir %{_datadir}/xfce4/i18n
-%{_datadir}/xfce4/i18n/nls.alias
 
 %files devel
 %defattr(644,root,root,755)
