@@ -1,34 +1,46 @@
 Summary: 	Utility library for the XFce4 desktop environment
+Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce4
 Name: 		libxfce4util
 Version: 	3.90.0
 Release: 	0.1
 License:	BSD
-URL: 		http://www.xfce.org/
-Source0: 	http://belnet.dl.sourceforge.net/sourceforge/xfce/%{name}-%{version}.tar.gz
+Group: 		Libraries
+Source0: 	http://dl.sourceforge.net/xfce/%{name}-%{version}.tar.gz
 # Source0-md5:	a76051fe04b9bd030fb6b7d2db302273
-Group: 		Development/Libraries
-Requires:	glib2 >= 2.0.0
+URL: 		http://www.xfce.org/
 BuildRequires: 	glib2-devel >= 2.0.0
+Requires:	glib2 >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Basic utility non-GUI functions for XFce4.
 
+%description -l pl
+Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla XFce4.
+
 %package devel
 Summary:	Development files for libxfce4util library
+Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description devel
 Development files for the libxfce4util library.
 
+%description devel -l pl
+Pliki nag³ówkowe biblioteki libxfce4util.
+
 %package static
-Summary:	Static libraries for libxfce4util
+Summary:	Static libxfce4util library
+Summary(pl):	Statyczna biblioteka libxfce4util
 Group:		Development/Libriaries
 Requires:	%{name}-devel = %{version}
 
 %description static
-Static libraries for libxfce4util.
+Static libxfce4util library.
+
+%description static -l pl
+Statyczna biblioteka libxfce4util.
 
 %prep
 %setup -q
@@ -39,26 +51,32 @@ Static libraries for libxfce4util.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%doc AUTHORS COPYING ChangeLog README
+%attr(755,root,root) %{_libdir}/lib*.so.*.*.*
+%dir %{_datadir}/xfce4
+%dir %{_datadir}/xfce4/i18n
+%{_datadir}/xfce4/i18n/nls.alias
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/lib*.so
-%{_libdir}/pkgconfig/*.pc
+%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
-%{_datadir}/xfce4/i18n/nls.alias
-%{_datadir}/xfce4/m4/
+%{_datadir}/xfce4/m4
+%{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/*a
+%{_libdir}/lib*.a
