@@ -5,7 +5,8 @@ Version:	4.0.5
 Release:	1
 License:	BSD
 Group:		Libraries
-Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
+#Source0:	ftp://ftp.berlios.de/pub/xfce-goodies/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://hannelore.f1.fhtw-berlin.de/mirrors/xfce4/%{version}/src/%{name}-%{version}.tar.gz
 # Source0-md5:	88cfd1c646233621c2e5c2fa170ccc6c
 URL:		http://www.xfce.org/
 BuildRequires:	glib2-devel >= 2.0.0
