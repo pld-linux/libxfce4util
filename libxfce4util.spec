@@ -14,6 +14,7 @@ URL:		http://www.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	glib2-devel >= 2.0.0
+BuildRequires:	gtk-doc
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9.0
 Requires:	glib2 >= 2.0.0
