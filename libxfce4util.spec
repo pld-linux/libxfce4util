@@ -1,12 +1,15 @@
+
+%define		_snap 20040806
+
 Summary:	Utility library for the XFce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska XFce
 Name:		libxfce4util
-Version:	4.1.13
-Release:	1
+Version:	4.2.0
+Release:	0.%{_snap}.1
 License:	BSD
 Group:		Libraries
-Source0:	http://lo1sanok.eu.org/~troll/PLD/xfce4/%{name}-%{version}.tar.bz2
-# Source0-md5:	55708440cfd8819e4685b3704a07fe8a
+Source0:	http://ep09.pld-linux.org/~havner/xfce4/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	2853200ba40791fea871e5f129fcddd5
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -48,15 +51,20 @@ Static libxfce4util library.
 %description static -l pl
 Statyczna biblioteka libxfce4util.
 
+%package tools
+Summary:	Tools for libxfce4util library
+Summary(pl):	Narzêdzia biblioteki libxfce4util
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description tools
+Tools for libxfce4util library.
+
+%description static -l pl
+Narzêdzia biblioteki libxfce4util.
+
 %prep
-%setup -q
-# This stupid workaround is for nonexistant xfce4-kiosk-query
-# As README.kiosk says - TBD
-mkdir xfce4-kiosk-query
-cat << EOF > xfce4-kiosk-query/Makefile.in
-all:
-install:
-EOF
+%setup -q -n %{name}
 
 %build
 %{__libtoolize}
@@ -96,3 +104,7 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+
+%files tools
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/*
