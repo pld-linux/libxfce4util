@@ -1,3 +1,4 @@
+%bcond_without	static_libs	# don't build static library
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
@@ -70,7 +71,8 @@ Narzêdzia biblioteki libxfce4util.
 %{__automake}
 %{__autoconf}
 %configure \
-	--with-html-dir=%{_gtkdocdir}
+	--with-html-dir=%{_gtkdocdir} \
+	%{!?with_static_libs:--disable-static}
 %{__make}
 
 %install
@@ -100,9 +102,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_pkgconfigdir}/*.pc
 %{_gtkdocdir}/libxfce4util
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
 
 %files tools
 %defattr(644,root,root,755)
