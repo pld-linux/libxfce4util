@@ -1,3 +1,4 @@
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
@@ -13,16 +14,19 @@ Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	glib2-devel >= 1:2.6.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
-Requires:	glib2 >= 2.2.0
+BuildRequires:	xfce4-dev-tools >= 4.3.90.1
+Requires:	glib2 >= 1:2.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		xfce_m4_dir %{_datadir}/xfce4/dev-tools/m4macros
 
 %description
 Basic utility non-GUI functions for Xfce.
 
-%description -l pl
+%description -l pl1
 Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla Xfce.
 
 %package devel
@@ -30,8 +34,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.2.0
-Requires:	gtk-doc-common
+Requires:	glib2-devel >= 1:2.2.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -68,11 +71,10 @@ Narzêdzia biblioteki libxfce4util.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I %{xfce_m4_dir}
 %{__autoheader}
-# Something's broken
-#%{__automake}
-#%{__autoconf}
+%{__automake}
+%{__autoconf}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
@@ -81,7 +83,8 @@ Narzêdzia biblioteki libxfce4util.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} \
+	install DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
