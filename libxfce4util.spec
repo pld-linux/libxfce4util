@@ -4,12 +4,12 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
-Version:	4.2.3.2
+Version:	4.3.90.1
 Release:	1
 License:	BSD, LGPL
 Group:		Libraries
-Source0:	http://hannelore.f1.fhtw-berlin.de/mirrors/xfce4/xfce-%{version}/src/%{name}-%{version}.tar.gz
-# Source0-md5:	2d312ba48da612501d6776f8b4a65797
+Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	1e5a6dd3555045e02126770788ba4067
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -68,10 +68,11 @@ Narzêdzia biblioteki libxfce4util.
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoheader}
-%{__automake}
-%{__autoconf}
+# Something's broken
+#%{__automake}
+#%{__autoconf}
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
@@ -92,7 +93,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog COPYING README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_datadir}/xfce4
 
 %files devel
 %defattr(644,root,root,755)
@@ -100,9 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
-%{_datadir}/xfce4/m4
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/libxfce4util
 
 %if %{with static_libs}
 %files static
