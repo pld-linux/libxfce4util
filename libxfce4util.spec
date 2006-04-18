@@ -26,7 +26,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Basic utility non-GUI functions for Xfce.
 
-%description -l pl1
+%description -l pl
 Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla Xfce.
 
 %package devel
