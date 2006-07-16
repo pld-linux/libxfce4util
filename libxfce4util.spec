@@ -1,22 +1,25 @@
+#
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
-Version:	4.2.3.2
+Version:	4.3.90.2
 Release:	1
 License:	BSD, LGPL
 Group:		Libraries
-Source0:	http://hannelore.f1.fhtw-berlin.de/mirrors/xfce4/xfce-%{version}/src/%{name}-%{version}.tar.gz
-# Source0-md5:	2d312ba48da612501d6776f8b4a65797
+Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	1fe13bf71e814aa5d512e772c011f234
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 2.2.0
+BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
-Requires:	glib2 >= 2.2.0
+BuildRequires:	xfce4-dev-tools >= 4.3.90.2
+Requires:	glib2 >= 1:2.12.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,8 +33,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 2.2.0
-Requires:	gtk-doc-common
+Requires:	glib2-devel >= 1:2.12.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -68,10 +70,11 @@ Narzêdzia biblioteki libxfce4util.
 
 %build
 %{__libtoolize}
-%{__aclocal} -I m4
+%{__aclocal}
 %{__autoheader}
 %{__automake}
 %{__autoconf}
+LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
@@ -80,7 +83,12 @@ Narzêdzia biblioteki libxfce4util.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT%{_datadir}/xfce4
+
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -88,7 +96,7 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog COPYING README
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
@@ -100,9 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.la
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
-%{_datadir}/xfce4/m4
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/libxfce4util
 
 %if %{with static_libs}
 %files static
