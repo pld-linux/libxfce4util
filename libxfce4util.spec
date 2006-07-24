@@ -6,7 +6,7 @@ Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
 Version:	4.3.90.2
-Release:	1
+Release:	2
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
@@ -14,12 +14,12 @@ Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
-BuildRequires:	glib2-devel >= 1:2.12.0
+BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	xfce4-dev-tools >= 4.3.90.2
-Requires:	glib2 >= 1:2.12.0
+Requires:	glib2 >= 1:2.12.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -33,7 +33,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.0
+Requires:	glib2-devel >= 1:2.12.1
 
 %description devel
 Development files for the libxfce4util library.
@@ -74,7 +74,6 @@ Narzêdzia biblioteki libxfce4util.
 %{__autoheader}
 %{__automake}
 %{__autoconf}
-LDFLAGS="%{rpmldflags} -Wl,--as-needed"
 %configure \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
