@@ -5,12 +5,12 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
-Version:	4.3.90.2
-Release:	2
+Version:	4.3.99.1
+Release:	1
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	1fe13bf71e814aa5d512e772c011f234
+# Source0-md5:	5474fda120b0f28f3b86bee268467060
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -18,7 +18,7 @@ BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
-BuildRequires:	xfce4-dev-tools >= 4.3.90.2
+BuildRequires:	xfce4-dev-tools >= %{version}
 Requires:	glib2 >= 1:2.12.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
