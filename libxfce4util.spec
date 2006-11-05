@@ -5,22 +5,22 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
-Version:	4.3.99.1
+Version:	4.3.99.2
 Release:	1
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	5474fda120b0f28f3b86bee268467060
+# Source0-md5:	4b327c64c292b2e672f69a0789deb2b7
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.1
+BuildRequires:	glib2-devel >= 1:2.12.4
 BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	xfce4-dev-tools >= %{version}
-Requires:	glib2 >= 1:2.12.1
+Requires:	glib2 >= 1:2.12.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +34,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.12.1
+Requires:	glib2-devel >= 1:2.12.4
 
 %description devel
 Development files for the libxfce4util library.
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog COPYING README
+%doc AUTHORS ChangeLog COPYING README NEWS TODO
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/xfce4
 
