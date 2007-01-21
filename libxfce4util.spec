@@ -5,12 +5,12 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
 Name:		libxfce4util
-Version:	4.3.99.2
-Release:	2
+Version:	4.4.0
+Release:	1
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	4b327c64c292b2e672f69a0789deb2b7
+# Source0-md5:	543fb8efe96d6e83f897a7c64c48e9e6
 URL:		http://www.xfce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -19,8 +19,8 @@ BuildRequires:	glib2-devel >= 1:2.12.4
 BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	xfce4-dev-tools >= %{version}
-Requires:	glib2 >= 1:2.12.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,6 +28,18 @@ Basic utility non-GUI functions for Xfce.
 
 %description -l pl
 Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla Xfce.
+
+%package apidocs
+Summary:	libxfce4util API documentation
+Summary(pl):	Dokumentacja API libxfce4util
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+libxfce4util API documentation.
+
+%description apidocs -l pl
+Dokumentacja API libxfce4util.
 
 %package devel
 Summary:	Development files for libxfce4util library
@@ -76,6 +88,7 @@ Narzêdzia biblioteki libxfce4util.
 %{__automake}
 %{__autoconf}
 %configure \
+	--enable-gtkdoc \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
 %{__make}
@@ -98,14 +111,18 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog COPYING README NEWS TODO
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%doc AUTHORS ChangeLog COPYING README NEWS THANKS TODO
+%attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %dir %{_datadir}/xfce4
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/libxfce4util.so
+%{_libdir}/libxfce4util.la
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
 %{_pkgconfigdir}/*.pc
@@ -113,9 +130,9 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libxfce4util.a
 %endif
 
 %files tools
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/xfce4-kiosk-query
