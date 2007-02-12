@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Utility library for the Xfce desktop environment
-Summary(pl):	Biblioteka narzêdziowa dla ¶rodowiska Xfce
+Summary(pl.UTF-8):   Biblioteka narzÄ™dziowa dla Å›rodowiska Xfce
 Name:		libxfce4util
 Version:	4.3.90.2
 Release:	1
@@ -25,12 +25,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Basic utility non-GUI functions for Xfce.
 
-%description -l pl
-Podstawowe funkcje narzêdziowe nie zwi±zane z GUI dla Xfce.
+%description -l pl.UTF-8
+Podstawowe funkcje narzÄ™dziowe nie zwiÄ…zane z GUI dla Xfce.
 
 %package devel
 Summary:	Development files for libxfce4util library
-Summary(pl):	Pliki nag³ówkowe biblioteki libxfce4util
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.0
@@ -38,32 +38,32 @@ Requires:	glib2-devel >= 1:2.12.0
 %description devel
 Development files for the libxfce4util library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libxfce4util.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libxfce4util.
 
 %package static
 Summary:	Static libxfce4util library
-Summary(pl):	Statyczna biblioteka libxfce4util
+Summary(pl.UTF-8):   Statyczna biblioteka libxfce4util
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libxfce4util library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libxfce4util.
 
 %package tools
 Summary:	Tools for libxfce4util library
-Summary(pl):	Narzêdzia biblioteki libxfce4util
+Summary(pl.UTF-8):   NarzÄ™dzia biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description tools
 Tools for libxfce4util library.
 
-%description static -l pl
-Narzêdzia biblioteki libxfce4util.
+%description static -l pl.UTF-8
+NarzÄ™dzia biblioteki libxfce4util.
 
 %prep
 %setup -q
