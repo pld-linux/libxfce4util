@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Utility library for the Xfce desktop environment
-Summary(pl.UTF-8):   Biblioteka narzędziowa dla środowiska Xfce
+Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
 Version:	4.4.0
 Release:	1
@@ -31,7 +31,7 @@ Podstawowe funkcje narzędziowe nie związane z GUI dla Xfce.
 
 %package apidocs
 Summary:	libxfce4util API documentation
-Summary(pl.UTF-8):   Dokumentacja API libxfce4util
+Summary(pl.UTF-8):	Dokumentacja API libxfce4util
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -43,7 +43,7 @@ Dokumentacja API libxfce4util.
 
 %package devel
 Summary:	Development files for libxfce4util library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libxfce4util
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	glib2-devel >= 1:2.12.4
@@ -56,7 +56,7 @@ Pliki nagłówkowe biblioteki libxfce4util.
 
 %package static
 Summary:	Static libxfce4util library
-Summary(pl.UTF-8):   Statyczna biblioteka libxfce4util
+Summary(pl.UTF-8):	Statyczna biblioteka libxfce4util
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -68,7 +68,7 @@ Statyczna biblioteka libxfce4util.
 
 %package tools
 Summary:	Tools for libxfce4util library
-Summary(pl.UTF-8):   Narzędzia biblioteki libxfce4util
+Summary(pl.UTF-8):	Narzędzia biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
