@@ -5,13 +5,13 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.4.3
+Version:	4.6.0
 Release:	1
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	0a4d887b84c8b79ae09a1c6b20626c95
-URL:		http://www.xfce.org/
+# Source0-md5:	2b0b7cdb4516704940eedf11edc94d5e
+URL:		http://www.xfce.org/projects/libraries/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -20,7 +20,7 @@ BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	xfce4-dev-tools >= 4.4.0.1
+BuildRequires:	xfce4-dev-tools >= 4.6.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -88,7 +88,7 @@ Narzędzia biblioteki libxfce4util.
 %{__automake}
 %{__autoconf}
 %configure \
-	--enable-gtkdoc \
+	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
 %{__make}
@@ -116,6 +116,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog COPYING README NEWS THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.4
 %dir %{_datadir}/xfce4
 
 %files apidocs
@@ -128,7 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxfce4util.la
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/libxfce4util-1.0.pc
 
 %if %{with static_libs}
 %files static
