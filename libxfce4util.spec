@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# disable gtk-doc
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Utility library for the Xfce desktop environment
@@ -16,6 +17,7 @@ BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.4
+%{?with_apidocs:BuildRequires:	gtk-doc}
 BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -88,7 +90,7 @@ Narzędzia biblioteki libxfce4util.
 %{__automake}
 %{__autoconf}
 %configure \
-	--enable-gtk-doc \
+	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
 	%{!?with_static_libs:--disable-static}
 %{__make}
@@ -103,6 +105,8 @@ install -d $RPM_BUILD_ROOT%{_datadir}/xfce4
 
 mv $RPM_BUILD_ROOT%{_datadir}/locale/nb{_NO,}
 mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
+
+%{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}/libxfce4util}
 
 %find_lang %{name}
 
@@ -119,9 +123,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.4
 %dir %{_datadir}/xfce4
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/%{name}
+%endif
 
 %files devel
 %defattr(644,root,root,755)
