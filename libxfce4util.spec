@@ -97,11 +97,10 @@ Narzędzia biblioteki libxfce4util.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,es,fr,id,it,ja,pt_BR,tr}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT%{_datadir}/xfce4
 
 mv $RPM_BUILD_ROOT%{_datadir}/locale/nb{_NO,}
 mv $RPM_BUILD_ROOT%{_datadir}/locale/pt{_PT,}
@@ -121,7 +120,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING README NEWS THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.4
-%dir %{_datadir}/xfce4
+%dir %{_sysconfdir}/xdg/xfce4
+%{_datadir}/xfce4
 
 %if %{with apidocs}
 %files apidocs
