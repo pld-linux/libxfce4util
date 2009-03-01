@@ -97,7 +97,7 @@ Narzędzia biblioteki libxfce4util.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,es,fr,id,it,ja,pt_BR,tr}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,da,es,fr,id,it,ja,pt_BR,tr}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
