@@ -7,7 +7,7 @@ Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
 Version:	4.6.1
-Release:	1
+Release:	2
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
@@ -97,7 +97,7 @@ Narzędzia biblioteki libxfce4util.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,da,es,fr,id,it,ja,pt_BR,tr}}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,da,es,fr,gl,id,it,ja,pt_BR,tr}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
