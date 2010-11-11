@@ -7,7 +7,7 @@ Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
 Version:	4.6.1
-Release:	2
+Release:	3
 License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
@@ -23,6 +23,7 @@ BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	xfce4-dev-tools >= 4.6.0
+Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -97,7 +98,6 @@ Narzędzia biblioteki libxfce4util.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/xdg/xfce4,%{_datadir}/xfce4/doc/{C,da,es,fr,gl,id,it,ja,pt_BR,tr}}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -117,8 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog COPYING README NEWS THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.4
-%dir %{_sysconfdir}/xdg/xfce4
-%{_datadir}/xfce4
 
 %if %{with apidocs}
 %files apidocs
