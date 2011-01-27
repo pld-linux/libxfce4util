@@ -6,13 +6,13 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.7.3
-Release:	0.1
+Version:	4.8.1
+Release:	1
 License:	BSD, LGPL
 Group:		Libraries
-Source0:	http://www.xfce.org/archive/xfce/4.8pre1/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	52a506bfc5c4b18006712a29abcbe90b
-URL:		http://www.xfce.org/projects/libraries/
+Source0:	http://archive.xfce.org/xfce/4.8/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	2be3af4c7db5ad293a7525e1021e6f0f
+URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	gettext-devel
@@ -22,7 +22,7 @@ BuildRequires:	gtk-doc-automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	xfce4-dev-tools >= 4.7.0
+BuildRequires:	xfce4-dev-tools >= 4.8.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -93,7 +93,8 @@ Narzędzia biblioteki libxfce4util.
 %configure \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
-	%{!?with_static_libs:--disable-static}
+	%{!?with_static_libs:--disable-static} \
+	--disable-silent-rules
 %{__make}
 
 %install
@@ -103,6 +104,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}/libxfce4util}
+
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{tl_PH,ur_PK}
 
 %find_lang %{name}
 
