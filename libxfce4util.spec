@@ -15,10 +15,12 @@ Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.
 URL:		http://www.xfce.org/projects/libraries/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.4
-%{?with_apidocs:BuildRequires:	gtk-doc}
 BuildRequires:	gtk-doc-automake
+%{?with_apidocs:BuildRequires:	gtk-doc}
+BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
