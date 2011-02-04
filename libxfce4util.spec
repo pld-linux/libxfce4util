@@ -80,7 +80,7 @@ Requires:	%{name} = %{version}-%{release}
 %description tools
 Tools for libxfce4util library.
 
-%description static -l pl.UTF-8
+%description tools -l pl.UTF-8
 Narzędzia biblioteki libxfce4util.
 
 %prep
