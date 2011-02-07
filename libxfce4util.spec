@@ -106,6 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 %{!?with_apidocs:rm -rf $RPM_BUILD_ROOT%{_gtkdocdir}/libxfce4util}
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/{tl_PH,ur_PK}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 %find_lang %{name}
 
@@ -130,7 +131,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libxfce4util.so
-%{_libdir}/libxfce4util.la
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
 %{_pkgconfigdir}/libxfce4util-1.0.pc
