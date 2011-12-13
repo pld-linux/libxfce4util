@@ -12,6 +12,7 @@ License:	BSD, LGPL
 Group:		Libraries
 Source0:	http://www.xfce.org/archive/xfce-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	eac51d58179cbcadc3f802450a8ec9cd
+Patch0:		%{name}-gchar.patch
 URL:		http://www.xfce.org/projects/libraries/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -83,6 +84,7 @@ Narzędzia biblioteki libxfce4util.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}

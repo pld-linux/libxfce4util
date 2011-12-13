@@ -1,0 +1,48 @@
+diff -ur libxfce4util-4.6.1.orig//libxfce4util/xfce-desktopentry.c libxfce4util-4.6.1/libxfce4util/xfce-desktopentry.c
+--- libxfce4util-4.6.1.orig//libxfce4util/xfce-desktopentry.c	2009-04-07 20:27:02.000000000 +0000
++++ libxfce4util-4.6.1/libxfce4util/xfce-desktopentry.c	2011-12-13 10:58:47.082022968 +0000
+@@ -472,7 +472,7 @@
+  *               by the caller.
+  * Since: 4.2
+  **/
+-G_CONST_RETURN gchar*
++const gchar*
+ xfce_desktop_entry_get_file (XfceDesktopEntry *desktop_entry)
+ {
+     g_return_val_if_fail (XFCE_IS_DESKTOP_ENTRY (desktop_entry), NULL);
+diff -ur libxfce4util-4.6.1.orig//libxfce4util/xfce-desktopentry.h libxfce4util-4.6.1/libxfce4util/xfce-desktopentry.h
+--- libxfce4util-4.6.1.orig//libxfce4util/xfce-desktopentry.h	2009-04-07 20:27:02.000000000 +0000
++++ libxfce4util-4.6.1/libxfce4util/xfce-desktopentry.h	2011-12-13 10:58:02.269085323 +0000
+@@ -68,7 +68,7 @@
+                                                                  const gchar     **categories,
+                                                                  gint              num_categories) G_GNUC_MALLOC;
+ 
+-G_CONST_RETURN gchar  *xfce_desktop_entry_get_file              (XfceDesktopEntry *desktop_entry);
++const gchar  *xfce_desktop_entry_get_file              (XfceDesktopEntry *desktop_entry);
+ 
+ gboolean               xfce_desktop_entry_get_int               (XfceDesktopEntry *desktop_entry,
+                                                                  const gchar      *key,
+diff -ur libxfce4util-4.6.1.orig//libxfce4util/xfce-i18n.c libxfce4util-4.6.1/libxfce4util/xfce-i18n.c
+--- libxfce4util-4.6.1.orig//libxfce4util/xfce-i18n.c	2009-04-07 20:27:02.000000000 +0000
++++ libxfce4util-4.6.1/libxfce4util/xfce-i18n.c	2011-12-13 10:58:40.314023026 +0000
+@@ -179,7 +179,7 @@
+  *
+  * Deprecated:4.4: Use g_strip_context() instead.
+  **/
+-G_CONST_RETURN gchar*
++const gchar*
+ xfce_strip_context (const gchar *msgid,
+                     const gchar *msgval)
+ {
+diff -ur libxfce4util-4.6.1.orig//libxfce4util/xfce-i18n.h libxfce4util-4.6.1/libxfce4util/xfce-i18n.h
+--- libxfce4util-4.6.1.orig//libxfce4util/xfce-i18n.h	2009-04-07 20:27:02.000000000 +0000
++++ libxfce4util-4.6.1/libxfce4util/xfce-i18n.h	2011-12-13 10:58:28.969022954 +0000
+@@ -70,7 +70,7 @@
+                                                  const gchar *encoding);
+ 
+ #if !defined(XFCE_DISABLE_DEPRECATED)
+-G_CONST_RETURN gchar* xfce_strip_context        (const gchar *msgid,
++const gchar* xfce_strip_context        (const gchar *msgid,
+                                                  const gchar *msgval);
+ #endif
+ 
