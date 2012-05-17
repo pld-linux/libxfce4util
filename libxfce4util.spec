@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %bcond_without	apidocs		# disable gtk-doc
-%bcond_without	static_libs	# don't build static library
+%bcond_with	static_libs	# don't build static library
 #
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
@@ -95,7 +95,7 @@ Narzędzia biblioteki libxfce4util.
 %configure \
 	--%{?with_apidocs:en}%{!?with_apidocs:dis}able-gtk-doc \
 	--with-html-dir=%{_gtkdocdir} \
-	%{!?with_static_libs:--disable-static} \
+	%{?with_static_libs:--enable-static} \
 	--disable-silent-rules
 %{__make}
 
@@ -122,7 +122,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog COPYING README NEWS THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.4
+%attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.6
 
 %if %{with apidocs}
 %files apidocs
