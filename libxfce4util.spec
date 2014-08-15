@@ -3,15 +3,16 @@
 %bcond_without	apidocs		# disable gtk-doc
 %bcond_with	static_libs	# don't build static library
 #
+%define		xfce_version	4.11.0
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.10.0
+Version:	4.11.0
 Release:	1
 License:	BSD, LGPL
 Group:		Libraries
-Source0:	http://archive.xfce.org/xfce/4.10/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	2e8defcd40cbf6afedde531b27314511
+Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.11/%{name}-%{version}.tar.bz2
+# Source0-md5:	319907682b1254ba76dcd81d97841452
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -24,7 +25,7 @@ BuildRequires:	intltool
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	xfce4-dev-tools >= 4.10.0
+BuildRequires:	xfce4-dev-tools >= %{xfce_version}
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
