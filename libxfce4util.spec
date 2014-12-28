@@ -17,7 +17,7 @@ URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.24.0
 BuildRequires:	gtk-doc-automake >= 1.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
