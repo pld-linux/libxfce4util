@@ -3,22 +3,22 @@
 %bcond_without	apidocs		# gtk-doc documentation
 %bcond_with	static_libs	# static library
 #
-%define		xfce_version	4.11.0
+%define		xfce_version	4.12.0
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.11.0
-Release:	3
+Version:	4.12.1
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.11/%{name}-%{version}.tar.bz2
-# Source0-md5:	319907682b1254ba76dcd81d97841452
+Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.12/%{name}-%{version}.tar.bz2
+# Source0-md5:	4eb012b6c1292ceedb3a83ebfc1ff08d
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.24.0
+BuildRequires:	glib2-devel >= 1:2.30.0
 BuildRequires:	gtk-doc-automake >= 1.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
 BuildRequires:	intltool >= 0.31
@@ -27,7 +27,7 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	xfce4-dev-tools >= %{xfce_version}
-Requires:	glib2 >= 1:2.24.0
+Requires:	glib2 >= 1:2.30.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,7 +42,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.24.0
+Requires:	glib2-devel >= 1:2.30.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -128,7 +128,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.6
+%attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.7
 
 %files devel
 %defattr(644,root,root,755)
