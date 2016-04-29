@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	apidocs		# gtk-doc documentation
 %bcond_with	static_libs	# static library
-#
+
 %define		xfce_version	4.12.0
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
 Version:	4.12.1
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.12/%{name}-%{version}.tar.bz2
@@ -19,8 +19,8 @@ BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gtk-doc-automake >= 1.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
+BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	intltool >= 0.31
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	perl-base
@@ -67,6 +67,9 @@ Summary:	libxfce4util API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4util
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 libxfce4util API documentation.
@@ -114,7 +117,7 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 # just a copy of ur
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/ur_PK
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
 
 %find_lang %{name}
 
