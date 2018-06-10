@@ -7,18 +7,19 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.12.1
-Release:	2
+Version:	4.13.1
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	4eb012b6c1292ceedb3a83ebfc1ff08d
+Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.13/%{name}-%{version}.tar.bz2
+# Source0-md5:	d1d81519accfd09b5bbdc6ec0f531366
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.30.0
+BuildRequires:	gobject-introspection-devel
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
 BuildRequires:	gtk-doc-automake >= 1.0
 BuildRequires:	intltool >= 0.31
@@ -132,6 +133,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.7
+%{_libdir}/girepository-1.0/libxfce4util-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -139,6 +141,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
 %{_pkgconfigdir}/libxfce4util-1.0.pc
+%{_datadir}/gir-1.0/libxfce4util-1.0.gir
 
 %if %{with static_libs}
 %files static
