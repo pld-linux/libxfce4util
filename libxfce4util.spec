@@ -7,12 +7,12 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.13.1
+Version:	4.13.3
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.13/%{name}-%{version}.tar.bz2
-# Source0-md5:	d1d81519accfd09b5bbdc6ec0f531366
+# Source0-md5:	f39185afe5f612bd2c9b3dfbaf50b4d2
 URL:		http://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
