@@ -3,32 +3,32 @@
 %bcond_without	apidocs		# gtk-doc documentation
 %bcond_with	static_libs	# static library
 
-%define		xfce_version	4.12.0
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.13.3
-Release:	2
+Version:	4.13.4
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.13/%{name}-%{version}.tar.bz2
-# Source0-md5:	f39185afe5f612bd2c9b3dfbaf50b4d2
-URL:		http://www.xfce.org/projects/libxfce4
+# Source0-md5:	ebb1d229a7a7f86a969a72b8d97c8531
+URL:		https://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.30.0
-BuildRequires:	gobject-introspection-devel
-%{?with_apidocs:BuildRequires:	gtk-doc >= 1.0}
-BuildRequires:	gtk-doc-automake >= 1.0
-BuildRequires:	intltool >= 0.31
+BuildRequires:	glib2-devel >= 1:2.42.0
+BuildRequires:	gobject-introspection-devel >= 1.30.0
+%{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
+BuildRequires:	gtk-doc-automake >= 1.9
+BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	xfce4-dev-tools >= %{xfce_version}
-Requires:	glib2 >= 1:2.30.0
+BuildRequires:	vala
+BuildRequires:	xfce4-dev-tools >= 4.13.0
+Requires:	glib2 >= 1:2.42.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.30.0
+Requires:	glib2-devel >= 1:2.42.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -91,14 +91,27 @@ Tools for libxfce4util library.
 %description tools -l pl.UTF-8
 Narzędzia biblioteki libxfce4util.
 
+%package -n vala-libxfce4util
+Summary:	Vala API for libxfce4util library
+Summary(pl.UTF-8):	API języka Vala do biblioteki libxfce4util
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	vala
+
+%description -n vala-libxfce4util
+Vala API for libxfce4util library.
+
+%description -n vala-libxfce4util -l pl.UTF-8
+API języka Vala do biblioteki libxfce4util.
+
 %prep
 %setup -q
 
 %build
 %{__libtoolize}
-%{__aclocal}
-%{__autoheader}
+%{__aclocal} -I m4
 %{__automake}
+%{__autoheader}
 %{__autoconf}
 %configure \
 	--enable-gtk-doc%{!?with_apidocs:=no} \
@@ -117,8 +130,12 @@ rm -rf $RPM_BUILD_ROOT
 
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
+
+# unify name
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{hy_AM,hy}
 # just a copy of ur
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ur_PK
+# not supported by glibc (as of 2.29)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name}
@@ -159,3 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %files tools
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/xfce4-kiosk-query
+
+%files -n vala-libxfce4util
+%defattr(644,root,root,755)
+%{_datadir}/vala/vapi/libxfce4util-1.0.vapi
