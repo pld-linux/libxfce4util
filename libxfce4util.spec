@@ -10,7 +10,7 @@ Version:	4.14.0
 Release:	2
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
+Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
 # Source0-md5:	46f44e36acc3abf1a5ba814c22a773cb
 URL:		https://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
