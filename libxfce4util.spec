@@ -6,18 +6,18 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.14.0
-Release:	2
+Version:	4.16.0
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	46f44e36acc3abf1a5ba814c22a773cb
+Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.16/%{name}-%{version}.tar.bz2
+# Source0-md5:	5a2a7b72c0357f410d8e0d4190beeae2
 URL:		https://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.42.0
+BuildRequires:	glib2-devel >= 1:2.50.0
 BuildRequires:	gobject-introspection-devel >= 1.30.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	gtk-doc-automake >= 1.9
@@ -27,8 +27,8 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	vala
-BuildRequires:	xfce4-dev-tools >= 4.13.0
-Requires:	glib2 >= 1:2.42.0
+BuildRequires:	xfce4-dev-tools >= 4.16.0
+Requires:	glib2 >= 1:2.50.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.42.0
+Requires:	glib2-devel >= 1:2.50.0
 
 %description devel
 Development files for the libxfce4util library.
@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
 # duplicates of hy,ur
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hy_AM,ur_PK}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,hy_AM,ur_PK}
 # not supported by glibc (as of 2.32)
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
@@ -146,10 +146,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README THANKS TODO
+%doc AUTHORS ChangeLog NEWS THANKS TODO
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.7
-%{_libdir}/girepository-1.0/libxfce4util-1.0.typelib
+%{_libdir}/girepository-1.0/Libxfce4util-1.0.typelib
 
 %files devel
 %defattr(644,root,root,755)
@@ -157,7 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_includedir}/xfce4
 %{_includedir}/xfce4/libxfce4util
 %{_pkgconfigdir}/libxfce4util-1.0.pc
-%{_datadir}/gir-1.0/libxfce4util-1.0.gir
+%{_datadir}/gir-1.0/Libxfce4util-1.0.gir
 
 %if %{with static_libs}
 %files static
