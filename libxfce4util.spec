@@ -68,9 +68,7 @@ Summary:	libxfce4util API documentation
 Summary(pl.UTF-8):	Dokumentacja API libxfce4util
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 libxfce4util API documentation.
