@@ -6,19 +6,19 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.16.0
+Version:	4.18.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	5a2a7b72c0357f410d8e0d4190beeae2
+Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.18/%{name}-%{version}.tar.bz2
+# Source0-md5:	9bb4837da56b0fc6b8ef4a01ec193a3c
 URL:		https://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.50.0
-BuildRequires:	gobject-introspection-devel >= 1.30.0
+BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	gobject-introspection-devel >= 1.66.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	gtk-doc-automake >= 1.9
 BuildRequires:	intltool >= 0.35.0
@@ -27,8 +27,8 @@ BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	vala
-BuildRequires:	xfce4-dev-tools >= 4.16.0
-Requires:	glib2 >= 1:2.50.0
+BuildRequires:	xfce4-dev-tools >= 4.18.0
+Requires:	glib2 >= 1:2.56.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,7 +43,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.50.0
+Requires:	glib2-devel >= 1:2.56.0
 
 %description devel
 Development files for the libxfce4util library.
