@@ -25,6 +25,7 @@ BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	vala
 BuildRequires:	xfce4-dev-tools >= 4.18.0
@@ -95,6 +96,7 @@ Summary(pl.UTF-8):	API języka Vala do biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	vala
+BuildArch:	noarch
 
 %description -n vala-libxfce4util
 Vala API for libxfce4util library.
