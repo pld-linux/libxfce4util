@@ -6,18 +6,18 @@
 Summary:	Utility library for the Xfce desktop environment
 Summary(pl.UTF-8):	Biblioteka narzędziowa dla środowiska Xfce
 Name:		libxfce4util
-Version:	4.18.2
+Version:	4.20.0
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.18/%{name}-%{version}.tar.bz2
-# Source0-md5:	9089e8974a581c5f39f610f2727c38ba
+Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.20/%{name}-%{version}.tar.bz2
+# Source0-md5:	810b370eb55fcd4635abfe55b047b38e
 URL:		https://www.xfce.org/projects/libxfce4
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-tools
-BuildRequires:	glib2-devel >= 1:2.56.0
+BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gobject-introspection-devel >= 1.66.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	gtk-doc-automake >= 1.9
@@ -28,8 +28,8 @@ BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	vala
-BuildRequires:	xfce4-dev-tools >= 4.18.0
-Requires:	glib2 >= 1:2.56.0
+BuildRequires:	xfce4-dev-tools >= 4.20.0
+Requires:	glib2 >= 1:2.72.0
 Requires:	xfce4-dirs >= 4.6
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -134,7 +134,7 @@ rm -rf $RPM_BUILD_ROOT
 # duplicates of hy,ur
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,hy_AM,ur_PK}
 # not supported by glibc (as of 2.32)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{fa_IR,ie}
 
 %find_lang %{name}
 
@@ -146,7 +146,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS THANKS TODO
+%doc AUTHORS ChangeLog NEWS README.md
 %attr(755,root,root) %{_libdir}/libxfce4util.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libxfce4util.so.7
 %{_libdir}/girepository-1.0/Libxfce4util-1.0.typelib
