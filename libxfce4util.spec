@@ -13,15 +13,14 @@ Group:		Libraries
 Source0:	https://archive.xfce.org/src/xfce/libxfce4util/4.20/%{name}-%{version}.tar.bz2
 # Source0-md5:	810b370eb55fcd4635abfe55b047b38e
 URL:		https://www.xfce.org/projects/libxfce4
-BuildRequires:	autoconf >= 2.50
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.8
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-tools
+BuildRequires:	gettext-tools >= 0.19.8
 BuildRequires:	glib2-devel >= 1:2.72.0
 BuildRequires:	gobject-introspection-devel >= 1.66.0
 %{?with_apidocs:BuildRequires:	gtk-doc >= 1.9}
 BuildRequires:	gtk-doc-automake >= 1.9
-BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libtool >= 2:2.2.6
 BuildRequires:	perl-base
 BuildRequires:	pkgconfig >= 1:0.9.0
@@ -131,10 +130,12 @@ rm -rf $RPM_BUILD_ROOT
 # obsoleted by pkg-config
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/*.la
 
+# unify to short code
+%{__mv} $RPM_BUILD_ROOT%{_localedir}/{fa_IR,fa}
 # duplicates of hy,ur
 %{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{hye,hy_AM,ur_PK}
 # not supported by glibc (as of 2.32)
-%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/{fa_IR,ie}
+%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/ie
 
 %find_lang %{name}
 
