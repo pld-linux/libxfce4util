@@ -43,7 +43,7 @@ Summary:	Development files for libxfce4util library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libxfce4util
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	glib2-devel >= 1:2.56.0
+Requires:	glib2-devel >= 1:2.72.0
 
 %description devel
 Development files for the libxfce4util library.
